@@ -1,0 +1,877 @@
+<!DOCTYPE html>
+<html ng-app="adventureRegister">
+
+<head>
+    <title>a d v e n t u r e | r e g i s t e r</title>
+
+    <!-- libs -->
+    <script type="text/javascript" src="../js/lib/angular/angular.js"></script>
+    <script type="text/javascript" src="../js/lib/angular/angular-route.js"></script>
+    <script type="text/javascript" src="../js/lib/angular/angular-resource.js"></script>
+    <script type="text/javascript" src="../js/lib/angular/angular-animate.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/lib/bootstrap/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../css/adventureRegister.css">
+
+
+    <!-- your stuff below -->
+    <script type="text/javascript" src="../js/adventureRegister/adventureRegister.js"></script>
+
+</head>
+
+<body>
+    <div ng-controller="GuidePlanCtrl">
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <p class="navbar-text pull-left">a d v e n t u r e | r e g i s t e r</p>
+            <ul class="nav nav-pills">
+                <li class="text-center pull-right">
+                    <a class="navBarText href="help.html"">help</a>
+                </li>
+                <li class="text-center pull-right">
+                    <a class="navBarText">new trip</a>
+                </li>
+                <li class="text-center pull-right">
+                    <a class="navBarText" href="../flag_settings.html">flag settings</a>
+                </li>
+                <li class="text-center pull-right">
+                    <a class="navBarText" href="../profile.html">profile</a>
+                </li>
+                <li class="text-center pull-right">
+                    <a class="navBarText" href="../index.html">home</a>
+                </li>
+            </ul>
+        </nav>
+
+
+
+
+        <form role="form">
+            <div class="col-xs-10">
+
+
+                <!-- section 1:  basic information -->
+                <div class="section">
+
+                    <!-- header -->
+                    <div class="section-header">
+                        <div class="col-xs-11">
+                            <h3>basic info</h3>
+                        </div>
+
+                        <div class="col-xs-1 text-right">
+                            <span class="glyphicon glyphicon-plus expandCollapseIcons" ng-click="trip_c_expandBasicInfo=!trip_c_expandBasicInfo" ng-show="!trip_c_expandBasicInfo"></span>
+                            <span class="glyphicon glyphicon-minus expandCollapseIcons" ng-click="trip_c_expandBasicInfo=!trip_c_expandBasicInfo" ng-show="trip_c_expandBasicInfo"></span>
+                        </div>
+                    </div>
+
+                    <p class="section-subtext"></p>
+
+                    <!-- Data form -->
+                    <div class="data-section" ng-show="trip_c_expandBasicInfo">
+
+                        <!-- trip name -->
+                        <div class="row data-row">
+                            <label class="col-xs-2 text-right data-label">trip name:</label>
+
+                            <div class="data-subsection" ng-show="!editTrip_c_name">
+                                <div class="col-xs-4 data-cell">{{trip_c_name}}</div>
+
+                                <div class="col-xs-1 data-cell">
+                                    <a ng-click="editTrip_c_name=true" ng-show="!editTrip_c_name">
+                                        <span class="glyphicon glyphicon-edit"></span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div ng-show="editTrip_c_name">
+                                <div class="col-xs-4">
+                                    <input type="text" class="form-control text-center" id="" ng-model="trip_c_name" />
+                                </div>
+
+                                <div class="col-xs-1 data-cell">
+                                    <a ng-click="editTrip_c_name=false" ng-show="editTrip_c_name">
+                                        <span class="glyphicon glyphicon-ok" ng-click="editTrip_c_name=false"></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <!-- trip type -->
+                        <div class="row data-row">
+                            <label class="col-xs-2 text-right data-label">type:</label>
+
+                            <div class="data-subsection" ng-show="!editTrip_c_type">
+                                <div class="col-xs-4 data-cell">{{trip_c_type}}</div>
+
+                                <div class="col-xs-1 data-cell">
+                                    <a ng-click="editTrip_c_type=true" ng-show="!editTrip_c_type">
+                                        <span class="glyphicon glyphicon-edit"></span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div ng-show="editTrip_c_type">
+                                <div class="form-group col-xs-4">
+                                    <select class="form-control text-center" ng-model="trip_c_type" ng-options="v for (k,v) in types" placeholder="select type"></select>
+                                </div>
+
+                                <div class="col-xs-1 data-cell">
+                                    <a ng-click="editTrip_c_type=false" ng-show="editTrip_c_type">
+                                        <span class="glyphicon glyphicon-ok" ng-click="editTrip_c_type=false"></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <!-- trip type -->
+                        <div class="row data-row">
+                            <label class="col-xs-2 text-right data-label">location:</label>
+
+                            <div class="data-subsection" ng-show="!editTrip_c_location">
+                                <div class="col-xs-4 data-cell">{{trip_c_location}}</div>
+
+                                <div class="col-xs-1 data-cell">
+                                    <a ng-click="editTrip_c_location=true" ng-show="!editTrip_c_location">
+                                        <span class="glyphicon glyphicon-edit"></span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div ng-show="editTrip_c_location">
+                                <div class="col-xs-4">
+                                    <input type="text" class="form-control text-center" id="" ng-model="trip_c_location" />
+                                </div>
+
+                                <div class="col-xs-1 data-cell">
+                                    <a ng-click="editTrip_c_location=false" ng-show="editTrip_c_location">
+                                        <span class="glyphicon glyphicon-ok" ng-click="editTrip_c_location=false"></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <!-- other members -->
+                        <div class="row data-row">
+                            <label class="col-xs-2 text-right data-label">other members:</label>
+
+                            <div class="data-subsection" ng-show="!editTrip_c_members">
+                                <div class="col-xs-4">
+                                    <div class="repeat-data-cell" ng-repeat="(idx, _trip_c_member) in trip_c_members">{{trip_c_members[idx]}}</div>
+                                </div>
+
+                                <div class="repeat-data-cell col-xs-1">
+                                    <a ng-click="editTrip_c_members=true">
+                                        <span class="glyphicon glyphicon-edit"></span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="col-xs-6" style="padding-left:0px; padding-right:0px;" ng-show="editTrip_c_members">
+                                <div ng-repeat="(idx, _trip_c_member) in trip_c_members">
+                                    <div class="repeat-input-cell col-xs-8">
+                                        <input type="input" class="form-control text-center" id="" placeholder="{{trip_c_members[idx]}}" ng-model="trip_c_members[idx]" />
+                                    </div>
+
+                                    <div class="col-xs-2 repeat-data-cell">
+                                        <a>
+                                            <span class="glyphicon glyphicon-remove" ng-click="removeMember(idx)"></span>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <div class="repeat-data-cell col-xs-9">
+                                    <a>
+                                        <span class="glyphicon glyphicon-plus" ng-click="addMember()"></span>
+                                    </a>
+                                    &nbsp;
+                                    <a>
+                                        <span class="glyphicon glyphicon-ok" ng-click="editTrip_c_members=false"></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <!-- description -->
+                        <div class="row data-row">
+                            <label class="col-xs-2 text-right data-label">description:</label>
+
+                            <div class="data-subsection" ng-show="!editTrip_c_description">
+                                <div class="col-xs-4 data-cell">{{trip_c_description}}</div>
+
+                                <div class="col-xs-1 data-cell">
+                                    <a ng-click="editTrip_c_description=true" ng-show="!editTrip_c_description">
+                                        <span class="glyphicon glyphicon-edit"></span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div ng-show="editTrip_c_description">
+                                <div class="col-xs-4">
+                                    <textarea type="input" class="form-control text-center" id="" placeholder="" ng-model="trip_c_description"></textarea>
+                                </div>
+
+                                <div class="col-xs-1 data-cell">
+                                    <a ng-click="editTrip_c_description=false" ng-show="editTrip_c_description">
+                                        <span class="glyphicon glyphicon-ok" ng-click="editTrip_c_description=false"></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <!-- departure -->
+                        <div class="row data-row">
+                            <label class="col-xs-2 text-right data-label">departure:</label>
+
+                            <div class="data-subsection" ng-show="!editTrip_c_departure">
+
+                                <div class="col-xs-2 repeat-data-cell">{{trip_c_departureDate}}</div>
+
+                                <div class="col-xs-2 repeat-data-cell">{{trip_c_departureTime}}</div>
+
+                                <div class="repeat-data-cell col-xs-1">
+                                    <a ng-click="editTrip_c_departure=true">
+                                        <span class="glyphicon glyphicon-edit"></span>
+                                    </a>
+                                </div>
+                            </div>
+
+
+                            <div ng-show="editTrip_c_departure">
+                                <div class="col-xs-2">
+                                    <input type="date" class="form-control text-center" id="" ng-model="trip_c_departure" />
+                                </div>
+
+                                <div class="col-xs-2">
+                                    <input type="time" class="form-control text-center" id="" placeholder="" ng-model="trip_c_departure" />
+                                </div>
+
+                                <div class="col-xs-1 data-cell">
+                                    <a ng-click="editTrip_c_departure=false" ng-show="editTrip_c_departure">
+                                        <span class="glyphicon glyphicon-ok" ng-click="editTrip_c_departure=false"></span>
+                                    </a>
+                                </div>
+
+
+                            </div>
+                        </div>
+
+
+
+                        <!-- return time -->
+                        <div class="row data-row">
+                            <label class="col-xs-2 text-right data-label">return:</label>
+
+                            <div class="data-subsection" ng-show="!editTrip_c_return">
+                                <div class="col-xs-2 repeat-data-cell">{{trip_c_returnDate}}</div>
+
+                                <div class="col-xs-2 repeat-data-cell">{{trip_c_returnTime}}</div>
+
+                                <div class="repeat-data-cell col-xs-1">
+                                    <a ng-click="editTrip_c_return=true">
+                                        <span class="glyphicon glyphicon-edit"></span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div ng-show="editTrip_c_return">
+                                <div class="col-xs-2">
+                                    <input type="date" class="form-control text-center" id="" placeholder="" ng-model="trip_c_return" />
+                                </div>
+
+                                <div class="col-xs-2">
+                                    <input type="time" class="form-control text-center" id="" placeholder="" ng-model="trip_c_return" />
+                                </div>
+
+                                <div class="col-xs-1 data-cell">
+                                    <a ng-click="editTrip_c_return=false" ng-show="editTrip_c_return">
+                                        <span class="glyphicon glyphicon-ok" ng-click="editTrip_c_return=false"></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <!-- flag time -->
+                        <div class="row data-row">
+                            <label class="col-xs-2 text-right data-label">flag time:</label>
+
+                            <div class="data-subsection" ng-show="!editTrip_c_flag">
+                                <div class="col-xs-2 repeat-data-cell">{{trip_c_flagDate}}</div>
+
+                                <div class="col-xs-2 repeat-data-cell">{{trip_c_flagTime}}</div>
+
+                                <div class="repeat-data-cell col-xs-1">
+                                    <a ng-click="editTrip_c_flag=true">
+                                        <span class="glyphicon glyphicon-edit"></span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div ng-show="editTrip_c_flag">
+                                <div class="col-xs-2">
+                                    <input type="date" class="form-control text-center" id="" placeholder="" ng-model="trip_c_flag" />
+                                </div>
+
+                                <div class="col-xs-2">
+                                    <input type="time" class="form-control text-center" id="" placeholder="" ng-model="trip_c_flag" />
+                                </div>
+
+                                <div class="col-xs-1 data-cell">
+                                    <a ng-click="editTrip_c_flag=false" ng-show="editTrip_c_flag">
+                                        <span class="glyphicon glyphicon-ok" ng-click="editTrip_c_flag=false"></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <!-- flag contacts -->
+                        <div class="row data-row">
+                            <label class="col-xs-2 text-right data-label">flag contacts:</label>
+
+                            <div class="data-subsection" ng-show="!editTrip_c_flagContacts">
+                                <div class="col-xs-4">
+                                    <div class="repeat-data-cell" ng-repeat="(idy, _trip_c_flagContact) in trip_c_flagContacts">{{trip_c_flagContacts[idy]}}</div>
+                                </div>
+
+                                <div class="repeat-data-cell col-xs-1">
+                                    <a ng-click="editTrip_c_flagContacts=true">
+                                        <span class="glyphicon glyphicon-edit"></span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="col-xs-6" style="padding-left:0px; padding-right:0px;" ng-show="editTrip_c_flagContacts">
+                                <div ng-repeat="(idy, _trip_c_flagContact) in trip_c_flagContacts">
+                                    <div class="repeat-input-cell col-xs-8">
+                                        <input type="input" class="form-control text-center" id="" placeholder="{{trip_c_flagContacts[idy]}}" ng-model="trip_c_flagContacts[idy]" />
+                                    </div>
+
+                                    <div class="col-xs-2 repeat-data-cell">
+                                        <a>
+                                            <span class="glyphicon glyphicon-remove" ng-click="removeFlagContact(idy)"></span>
+                                        </a>
+                                    </div>
+                                </div>
+
+                                <div class="repeat-data-cell col-xs-9">
+                                    <a>
+                                        <span class="glyphicon glyphicon-plus" ng-click="addFlagContact()"></span>
+                                    </a>
+                                    &nbsp;
+                                    <a>
+                                        <span class="glyphicon glyphicon-ok" ng-click="editTrip_c_flagContacts=false"></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <!-- section 2:  route plan / objectives -->
+                <div class="section">
+
+                    <!-- header -->
+                    <div class="section-header">
+                        <div class="col-xs-11">
+                            <h3>route plan / objectives</h3>
+                        </div>
+
+                        <div class="col-xs-1 text-right">
+                            <span class="glyphicon glyphicon-plus expandCollapseIcons" ng-click="expandRouteInfo=!expandRouteInfo" ng-show="!expandRouteInfo"></span>
+                            <span class="glyphicon glyphicon-minus expandCollapseIcons" ng-click="expandRouteInfo=!expandRouteInfo" ng-show="expandRouteInfo"></span>
+                        </div>
+                    </div>
+
+                    <p class="section-subtext"></p>
+
+
+
+                    <!-- Data form -->
+                    <div class="data-section" ng-show="expandRouteInfo">
+
+                        <!-- description -->
+                        <div class="row data-row">
+                            <label class="col-xs-2 text-right data-label">route description:</label>
+
+                            <div class="data-subsection" ng-show="!editTrip_c_routeDescription">
+                                <div class="col-xs-4 data-cell">{{trip_c_routeDescription}}</div>
+
+                                <div class="col-xs-1 data-cell">
+                                    <a ng-click="editTrip_c_routeDescription=true" ng-show="!editTrip_c_routeDescription">
+                                        <span class="glyphicon glyphicon-edit"></span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div ng-show="editTrip_c_routeDescription">
+                                <div class="col-xs-4">
+                                    <textarea type="input" class="form-control text-center" id="" placeholder="" ng-model="trip_c_routeDescription"></textarea>
+                                </div>
+
+                                <div class="col-xs-1 data-cell">
+                                    <a ng-click="editTrip_c_routeDescription=false" ng-show="editTrip_c_routeDescription">
+                                        <span class="glyphicon glyphicon-ok" ng-click="editTrip_c_routeDescription=false"></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <!-- upload images -->
+                        <div class="row data-row">
+                            <label class="col-xs-2 text-right data-label">upload images:</label>
+
+                            <div class="col-xs-3">
+                   
+
+                            </div>
+                            <div class="col-xs-1">
+                                <a ng-click="editTrip_c_routeDescription=false">
+                                    <span class="glyphicon glyphicon-remove"></span>
+                                </a>
+                                &nbsp;
+                                <a ng-click="editTrip_c_routeDescription=false">
+                                    <span class="glyphicon glyphicon-plus"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <!-- section 3:  relavent equipment -->
+                <div class="section">
+
+                    <!-- header -->
+                    <div class="section-header">
+                        <div class="col-xs-11">
+                            <h3>relavent equipment</h3>
+                        </div>
+
+                        <div class="col-xs-1 text-right">
+                            <span class="glyphicon glyphicon-plus expandCollapseIcons" ng-click="expandRelaventEquipment=!expandRelaventEquipment" ng-show="!expandRelaventEquipment"></span>
+                            <span class="glyphicon glyphicon-minus expandCollapseIcons" ng-click="expandRelaventEquipment=!expandRelaventEquipment" ng-show="expandRelaventEquipment"></span>
+                        </div>
+                    </div>
+
+                    <p class="section-subtext"></p>
+
+
+
+                    <!-- Data form -->
+                    <div class="data-section" ng-show="expandRelaventEquipment">
+
+                        <!-- communcation -->
+                        <div>
+                            <div class="row data-row">
+                                <label class="col-xs-2 text-right data-label">communication</label>
+
+                                <div class="col-xs-1 data-cell">
+                                    <a ng-click="editTrip_c_communicationEquipment=true" ng-show="!editTrip_c_communicationEquipment">
+                                        <span class="glyphicon glyphicon-edit"></span>
+                                    </a>
+                                    <a ng-click="editTrip_c_communicationEquipment=false" ng-show="editTrip_c_communicationEquipment">
+                                        <span class="glyphicon glyphicon-ok"></span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="row data-row">
+                                <div class="col-xs-1"></div>
+
+                                <div class="col-xs-3">
+                                    <input ng-show="editTrip_c_communicationEquipment" type="checkbox" ng-model="trip_c_cellPhone" />
+                                    <span ng-show="!editTrip_c_communicationEquipment&&trip_c_cellPhone==true" class="glyphicon glyphicon-ok"></span>
+                                    <span class="equipmentLabel">cell phone</span>
+                                </div>
+
+                                <div class="col-xs-3">
+                                    <input ng-show="editTrip_c_communicationEquipment" type="checkbox" ng-model="trip_c_satPhone" />
+                                    <span ng-show="!editTrip_c_communicationEquipment&&trip_c_satPhone==true" class="glyphicon glyphicon-ok"></span>
+                                    <span class="equipmentLabel">sat phone</span>
+                                </div>
+
+                                <div class="col-xs-3">
+                                    <input ng-show="editTrip_c_communicationEquipment" type="checkbox" ng-model="trip_c_radio" />
+                                    <span ng-show="!editTrip_c_communicationEquipment&&trip_c_radio==true" class="glyphicon glyphicon-ok"></span>
+                                    <span class="equipmentLabel">vhf radio</span>
+                                </div>
+                            </div>
+
+                            <div class="row data-row">
+                                <div class="col-xs-1"></div>
+
+                                <div class="col-xs-3">
+                                    <input ng-show="editTrip_c_communicationEquipment" type="checkbox" ng-model="trip_c_personalLocatorBeacon" />
+                                    <span ng-show="!editTrip_c_communicationEquipment&&trip_c_personalLocatorBeacon==true" class="glyphicon glyphicon-ok"></span>
+                                    <span class="equipmentLabel">personal locator beacon</span>
+                                </div>
+
+                                <div class="col-xs-1">
+                                    <input ng-show="editTrip_c_communicationEquipment" type="checkbox" ng-model="trip_c_otherCommuncationEquipment" />
+                                    <span ng-show="!editTrip_c_communicationEquipment&&trip_c_otherCommunicationEquipment==true" class="glyphicon glyphicon-ok"></span>
+                                    <span class="equipmentLabel">other:</span>
+                                </div>
+
+                                <div class=col-xs-3>
+                                    <input type="input" class="form-control inputCell text-center inline" ng-show="editTrip_c_communicationEquipment" id="name" placeholder="" ng-model="trip_c_otherCommucicationEquipmentDescription" />
+                                    <span ng-show="!editTrip_c_communicationEquipment">{{trip_c_otherCommucicationEquipmentDescription}}</span>
+                                </div>
+
+                            </div>
+
+                            <div class="row">
+                                <div class="col-xs-1"></div>
+
+                                <div class="col-xs-7">
+                                    <textarea ng-show="editTrip_c_communicationEquipment" type="input" class="form-control inputCell text-center" placeholder="notes/numbers/frequencies/etc." ng-model="trip_c_communicationEquipmentNotes"></textarea>
+                                    <span ng-show="!editTrip_c_communicationEquipment">notes: &nbsp; {{trip_c_communicationEquipmentNotes}}</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="height:20px;"></div>
+
+                        <!-- overnight -->
+                        <div>
+                            <div class="row data-row">
+                                <label class="col-xs-2 text-left data-label">overnight</label>
+
+                                <div class="col-xs-1 data-cell">
+                                    <a ng-click="editTrip_c_overnightEquipment=true" ng-show="!editTrip_c_overnightEquipment">
+                                        <span class="glyphicon glyphicon-edit"></span>
+                                    </a>
+                                    <a ng-click="editTrip_c_overnightEquipment=false" ng-show="editTrip_c_overnightEquipment">
+                                        <span class="glyphicon glyphicon-ok" ng-click="editTrip_c_overnightEquipment=false"></span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="row data-row">
+                                <div class="col-xs-1"></div>
+
+                                <div class="col-xs-3">
+                                    <input ng-show="editTrip_c_overnightEquipment" type="checkbox" ng-model="trip_c_tent" />
+                                    <span ng-show="!editTrip_c_overnightEquipment&&trip_c_tent==true" class="glyphicon glyphicon-ok"></span>
+                                    <span class="equipmentLabel">tent</span>
+                                </div>
+
+                                <div class="col-xs-3">
+                                    <input ng-show="editTrip_c_overnightEquipment" type="checkbox" ng-model="trip_c_bivySack" />
+                                    <span ng-show="!editTrip_c_overnightEquipment&&trip_c_bivySack==true" class="glyphicon glyphicon-ok"></span>
+                                    <span class="equipmentLabel">bivy sack</span>
+                                </div>
+
+                                <div class="col-xs-3">
+                                    <input ng-show="editTrip_c_overnightEquipment" type="checkbox" ng-model="trip_c_tarp" />
+                                    <span ng-show="!editTrip_c_overnightEquipment&&trip_c_tarp==true" class="glyphicon glyphicon-ok"></span>
+                                    <span class="equipmentLabel">tarp</span>
+                                </div>
+                            </div>
+
+                            <div class="row data-row">
+                                <div class="col-xs-1"></div>
+
+                                <div class="col-xs-3">
+                                    <input ng-show="editTrip_c_overnightEquipment" type="checkbox" ng-model="trip_c_insulation" />
+                                    <span ng-show="!editTrip_c_overnightEquipment&&trip_c_insulation==true" class="glyphicon glyphicon-ok"></span>
+                                    <span class="equipmentLabel">insulation</span>
+                                </div>
+
+                                <div class="col-xs-3">
+                                    <input ng-show="editTrip_c_overnightEquipment" type="checkbox" ng-model="trip_c_stove" />
+                                    <span ng-show="!editTrip_c_overnightEquipment&&trip_c_stove==true" class="glyphicon glyphicon-ok"></span>
+                                    <span class="equipmentLabel">stove</span>
+                                </div>
+
+                                <div class="col-xs-3">
+                                    <input ng-show="editTrip_c_overnightEquipment" type="checkbox" ng-model="trip_c_headlamps" />
+                                    <span ng-show="!editTrip_c_overnightEquipment&&trip_c_headlamps==true" class="glyphicon glyphicon-ok"></span>
+                                    <span class="equipmentLabel">headlamps</span>
+                                </div>
+                            </div>
+
+                            <div class="row data-row">
+                                <div class="col-xs-4"></div>
+
+                                <div class="col-xs-1">
+                                    <input ng-show="editTrip_c_overnightEquipment" type="checkbox" ng-model="trip_c_otherOvernightEquipment" />
+                                    <span ng-show="!editTrip_c_overnightEquipment&&trip_c_other==true" class="glyphicon glyphicon-ok"></span>
+                                    <span class="equipmentLabel">other:</span>
+                                </div>
+
+                                <div class=col-xs-3>
+                                    <input ng-show="editTrip_c_overnightEquipment" type="input" class="form-control inputCell text-center inline" id="name" placeholder="" ng-model="trip_c_otherOvernightEquipmentDescription" />
+                                    <span ng-show="!editTrip_c_overnightEquipment">{{trip_c_otherOvernightEquipmentDescription}}</span>
+                                </div>
+
+                            </div>
+
+                            <div class="row">
+                                <div class="col-xs-1"></div>
+
+                                <div class="col-xs-7">
+                                    <textarea ng-show="editTrip_c_overnightEquipment" type="input" class="form-control inputCell text-center" placeholder="" ng-model="overnightEquipmentNotes"></textarea>
+                                    <span ng-show="!editTrip_c_overnightEquipment">notes: &nbsp; {{trip_c_overnightEquipmentNotes}}</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="height:20px;"></div>
+
+                        <!-- identification -->
+                        <div>
+                            <div class="row data-row">
+                                <label class="col-xs-2 text-right data-label">identification</label>
+
+
+                                <div class="col-xs-1 data-cell">
+                                    <a ng-click="editTrip_c_identificationEquipment=true" ng-show="!editTrip_c_identificationEquipment">
+                                        <span class="glyphicon glyphicon-edit"></span>
+                                    </a>
+                                    <a ng-click="editTrip_c_identificationEquipment=false" ng-show="editTrip_c_identificationEquipment">
+                                        <span class="glyphicon glyphicon-ok" ng-click="editTrip_c_identificationEquipment=false"></span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div class="row data-row">
+
+                                <div class="row">
+                                    <div class="col-xs-1"></div>
+                                    <div class="col-xs-2">
+                                        <span class="equipmentLabel">jacket colors:</span>
+                                    </div>
+                                    <div class=col-xs-3>
+                                        <input ng-show="editTrip_c_identificationEquipment" type="input" class="form-control inputCell text-center inline" placeholder="" ng-model="trip_c_jacketColors" />
+                                        <span ng-show="!editTrip_c_">{{trip_c_jacketColors}}</span>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-xs-1"></div>
+                                    <div class="col-xs-2">
+                                        <span class="equipmentLabel">helmet colors:</span>
+                                    </div>
+                                    <div class=col-xs-3>
+                                        <input ng-show="editTrip_c_identificationEquipment" type="input" class="form-control inputCell text-center inline" placeholder="" ng-model="trip_c_helmetColors" />
+                                        <span ng-show="!editTrip_c_identificationEquipment">{{trip_c_helmetColors}}</span>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-xs-1"></div>
+                                    <div class="col-xs-2">
+                                        <span class="equipmentLabel">rope colors:</span>
+                                    </div>
+                                    <div class=col-xs-3>
+                                        <input ng-show="editTrip_c_identificationEquipment" type="input" class="form-control inputCell text-center inline" placeholder="" ng-model="trip_c_ropeColors" />
+                                        <span ng-show="!editTrip_c_identificationEquipment">{{trip_c_ropeColors}}</span>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-xs-1"></div>
+                                    <div class="col-xs-2">
+                                        <span class="equipmentLabel">tent colors:</span>
+                                    </div>
+                                    <div class=col-xs-3>
+                                        <input ng-show="editTrip_c_identificationEquipment" type="input" class="form-control inputCell text-center inline" placeholder="" ng-model="trip_c_tentColors" />
+                                        <span ng-show="!editTrip_c_identificationEquipment">{{trip_c_tentColors}}</span>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-xs-1"></div>
+                                    <div class="col-xs-7">
+                                        <textarea ng-show="editTrip_c_identificationEquipment" type="input" class="form-control inputCell text-center" placeholder="notes" ng-model="trip_c_identificationEquipmentNotes"></textarea>
+                                        <span ng-show="!editTrip_c_identificationEquipment">notes: &nbsp; {{trip_c_identificationEquipmentNotes}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- section 4: sharing -->
+                <div class="section">
+
+                    <!-- header -->
+                    <div class="section-header">
+                        <div class="col-xs-11">
+                            <h3>sharing</h3>
+                        </div>
+
+                        <div class="col-xs-1 text-right">
+                            <span class="glyphicon glyphicon-plus expandCollapseIcons" ng-click="expandSharing=!expandSharing" ng-show="!expandSharing"></span>
+                            <span class="glyphicon glyphicon-minus expandCollapseIcons" ng-click="expandSharing=!expandSharing" ng-show="expandSharing"></span>
+                        </div>
+                    </div>
+
+                    <p class="section-subtext"></p>
+
+
+
+                    <!-- Data form -->
+                    <div class="data-section" ng-show="expandSharing">
+
+                        <div ng-show="expandSharing">
+                            <div class="row">
+                                <label class="col-xs-3 inputCell text-right control-label">make this trip visible to:</label>
+                                <div class="col-xs-1 data-cell">
+                                    <a ng-click="editTrip_c_sharing=true" ng-show="!editTrip_c_sharing">
+                                        <span class="glyphicon glyphicon-edit"></span>
+                                    </a>
+                                    <a ng-click="editTrip_c_sharing=false" ng-show="editTrip_c_sharing">
+                                        <span class="glyphicon glyphicon-ok" ng-click="editTrip_c_sharing=false"></span>
+                                    </a>
+                                </div>
+                                </div>
+                            <div class="row data-row">
+                                <div class="col-xs-2"></div>
+                                <div class="col-xs-2">
+                                    <input ng-show="editTrip_c_sharing" type="checkbox" ng-model="trip_c_shareWithEverybody" />
+                                    <span ng-show="!editTrip_c_sharing&&trip_c_shareWithEverybody==true" class="glyphicon glyphicon-ok"></span>
+                                    <span class="equipmentLabel">everybody</span>
+                                </div>
+                                <div class="col-xs-2">
+                                    <input ng-show="editTrip_c_sharing" type="checkbox" ng-model="trip_c_shareWithNobody" />
+                                    <span ng-show="!editTrip_c_sharing&&trip_c_shareWithNobody==true" class="glyphicon glyphicon-ok"></span>
+                                    <span class="equipmentLabel">nobody</span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-2"></div>
+                                <div class="col-xs-2">
+                                    <input ng-show="editTrip_c_sharing" type="checkbox" ng-model="trip_c_shareWithGroup1" />
+                                    <span ng-show="!editTrip_c_sharing&&trip_c_shareWithGroup1==true" class="glyphicon glyphicon-ok"></span>
+                                    <span class="equipmentLabel">group 1</span>
+                                </div>
+                                <div class="col-xs-2">
+                                    <input ng-show="editTrip_c_sharing" type="checkbox" ng-model="trip_c_shareWithGroup2" />
+                                    <span ng-show="!editTrip_c_sharing&&trip_c_shareWithGroup2==true" class="glyphicon glyphicon-ok"></span>
+                                    <span class="equipmentLabel">group 2</span>
+                                </div>
+                                <div class="col-xs-2">
+                                    <input ng-show="editTrip_c_sharing" type="checkbox" ng-model="trip_c_shareWithGroup3" />
+                                    <span ng-show="!editTrip_c_sharing&&trip_c_shareWithGroup3==true" class="glyphicon glyphicon-ok"></span>
+                                    <span class="equipmentLabel">group 3</span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+                <!-- section 5:  trip report -->
+                <div class="section">
+
+                    <!-- header -->
+                    <div class="section-header">
+                        <div class="col-xs-11">
+                            <h3>trip report</h3>
+                        </div>
+
+                        <div class="col-xs-1 text-right">
+                            <span class="glyphicon glyphicon-plus expandCollapseIcons" ng-click="expandTripReport=!expandTripReport" ng-show="!expandTripReport"></span>
+                            <span class="glyphicon glyphicon-minus expandCollapseIcons" ng-click="expandTripReport=!expandTripReport" ng-show="expandTripReport"></span>
+                        </div>
+                    </div>
+
+                    <p class="section-subtext"></p>
+
+
+
+                    <!-- Data form -->
+                    <div class="data-section" ng-show="expandTripReport">
+
+                        <!-- description -->
+                        <div class="row data-row">
+                            <label class="col-xs-2 text-right data-label">trip report:</label>
+
+                            <div class="data-subsection" ng-show="!editTrip_c_tripReport">
+                                <div class="col-xs-4 data-cell">{{trip_c_tripReport}}</div>
+
+                                <div class="col-xs-1 data-cell">
+                                    <a ng-click="editTrip_c_tripReport=true" ng-show="!editTrip_c_tripReport">
+                                        <span class="glyphicon glyphicon-edit"></span>
+                                    </a>
+                                </div>
+                            </div>
+
+                            <div ng-show="editTrip_c_tripReport">
+                                <div class="col-xs-4">
+                                    <textarea type="input" class="form-control text-center" id="" placeholder="" ng-model="trip_c_tripReport"></textarea>
+                                </div>
+
+                                <div class="col-xs-1 data-cell">
+                                    <a ng-click="editTrip_c_tripReport=false" ng-show="editTrip_c_tripReport">
+                                        <span class="glyphicon glyphicon-ok" ng-click="editTrip_c_tripReport=false"></span>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <!-- upload images -->
+                        <div class="row data-row">
+                            <label class="col-xs-2 text-right data-label">upload images:</label>
+
+                            <div class="col-xs-3">
+
+
+                            </div>
+                            <div class="col-xs-1">
+                                <a ng-click="editTrip_c_tripReport=false">
+                                    <span class="glyphicon glyphicon-remove"></span>
+                                </a>
+                                &nbsp;
+                                <a ng-click="editTrip_c_tripReport=false">
+                                    <span class="glyphicon glyphicon-plus"></span>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+
+            </div>
+
+
+
+
+
+
+        </form>
+
+    </div>
+
+
+
+
+
+</body>
+
+</html>

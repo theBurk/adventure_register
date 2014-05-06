@@ -1,0 +1,562 @@
+<!DOCTYPE html>
+<html ng-app="adventureRegister">
+
+<head>
+    <title>a d v e n t u r e | r e g i s t e r</title>
+
+    <!-- libs -->
+    <script type="text/javascript" src="../js/lib/angular/angular.js"></script>
+    <script type="text/javascript" src="../js/lib/angular/angular-route.js"></script>
+    <script type="text/javascript" src="../js/lib/angular/angular-resource.js"></script>
+    <script type="text/javascript" src="../js/lib/angular/angular-animate.js"></script>
+    <link rel="stylesheet" type="text/css" href="../css/lib/bootstrap/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="../css/adventureRegister.css">
+
+
+    <!-- your stuff below -->
+    <script type="text/javascript" src="../js/adventureRegister/adventureRegister.js"></script>
+
+</head>
+
+<body>
+    <div ng-controller="GuidePlanCtrl">
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <p class="navbar-text pull-left">a d v e n t u r e | r e g i s t e r</p>
+            <ul class="nav nav-pills">
+                <li class="text-center pull-right">
+                    <a class="navBarText" href="help.html">help</a>
+                </li>
+                <li class="text-center pull-right">
+                    <a class="navBarText" href="trip_c.html">new trip</a>
+                </li>
+                <li class="text-center pull-right">
+                    <a class="navBarText" href="../flag_settings.html">flag settings</a>
+                </li>
+                <li class="text-center pull-right">
+                    <a class="navBarText" href="../profile.html">profile</a>
+                </li>
+                <li class="text-center pull-right">
+                    <a class="navBarText" href="../index.html">home</a>
+                </li>
+            </ul>
+        </nav>
+
+
+
+
+        <form role="form">
+            <div class="col-xs-10">
+
+
+                <!-- section 1:  basic information -->
+                <div class="section">
+
+                    <!-- header -->
+                    <div class="section-header">
+                        <div class="col-xs-11">
+                            <h3>basic info</h3>
+                        </div>
+
+                        <div class="col-xs-1 text-right">
+                            <span class="glyphicon glyphicon-plus expandCollapseIcons" ng-click="expandBasicInfo=!expandBasicInfo" ng-show="!expandBasicInfo"></span>
+                            <span class="glyphicon glyphicon-minus expandCollapseIcons" ng-click="expandBasicInfo=!expandBasicInfo" ng-show="expandBasicInfo"></span>
+                        </div>
+                    </div>
+
+                    <p class="section-subtext"></p>
+
+                    <!-- Data form -->
+                    <div class="data-section" ng-show="expandBasicInfo">
+
+                        <!-- trip name -->
+                        <div class="row data-row">
+                            <label class="col-xs-2 text-right data-label">trip name:</label>
+
+                            <div class="data-subsection" ng-show="!editTrip_b_name">
+                                <div class="col-xs-4 data-cell">{{trip_b_name}}</div>
+                            </div>
+                        </div>
+
+
+
+                        <!-- trip type -->
+                        <div class="row data-row">
+                            <label class="col-xs-2 text-right data-label">type:</label>
+
+                            <div class="data-subsection" ng-show="!editTrip_b_type">
+                                <div class="col-xs-4 data-cell">{{trip_b_type}}</div>
+                            </div>
+                        </div>
+
+
+
+                        <!-- location -->
+                        <div class="row data-row">
+                            <label class="col-xs-2 text-right data-label">location:</label>
+
+                            <div class="data-subsection" ng-show="!editTrip_b_location">
+                                <div class="col-xs-4 data-cell">{{trip_b_location}}</div>
+                            </div>
+                        </div>
+
+
+
+                        <!-- other members -->
+                        <div class="row data-row">
+                            <label class="col-xs-2 text-right data-label">other members:</label>
+
+                            <div class="data-subsection" ng-show="!editTrip_b_members">
+                                <div class="col-xs-4">
+                                    <div class="repeat-data-cell" ng-repeat="(idx, _trip_b_member) in trip_b_members">{{trip_b_members[idx]}}</div>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+                        <!-- description -->
+                        <div class="row data-row">
+                            <label class="col-xs-2 text-right data-label">description:</label>
+
+                            <div class="data-subsection" ng-show="!editTrip_b_description">
+                                <div class="col-xs-4 data-cell">{{trip_b_description}}</div>
+                            </div>
+                        </div>
+
+
+
+                        <!-- departure -->
+                        <div class="row data-row">
+                            <label class="col-xs-2 text-right data-label">departure:</label>
+
+                            <div class="data-subsection" ng-show="!editTrip_b_departure">
+                                <div class="col-xs-2 repeat-data-cell">{{trip_b_departureDate}}</div>
+
+                                <div class="col-xs-2 repeat-data-cell">{{trip_b_departureTime}}</div>
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- return time -->
+                        <div class="row data-row">
+                            <label class="col-xs-2 text-right data-label">return:</label>
+
+                            <div class="data-subsection" ng-show="!editTrip_b_return">
+                                <div class="col-xs-2 repeat-data-cell">{{trip_b_returnDate}}</div>
+
+                                <div class="col-xs-2 repeat-data-cell">{{trip_b_returnTime}}</div>
+                            </div>
+                        </div>
+
+
+
+                        <!-- flag time -->
+                        <div class="row data-row">
+                            <label class="col-xs-2 text-right data-label">flag time:</label>
+
+                            <div class="data-subsection" ng-show="!editTrip_b_flag">
+                                <div class="col-xs-2 repeat-data-cell">{{trip_b_flagDate}}</div>
+
+                                <div class="col-xs-2 repeat-data-cell">{{trip_b_flagTime}}</div>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- flag contacts -->
+                        <div class="row data-row">
+                            <label class="col-xs-2 text-right data-label">flag contacts:</label>
+
+                            <div class="data-subsection" ng-show="!editTrip_b_flagContacts">
+                                <div class="col-xs-4">
+                                    <div class="repeat-data-cell" ng-repeat="(idy, _trip_b_flagContact) in trip_b_flagContacts">{{trip_b_flagContacts[idy]}}</div>
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <!-- section 2:  route plan / objectives -->
+                <div class="section">
+
+                    <!-- header -->
+                    <div class="section-header">
+                        <div class="col-xs-11">
+                            <h3>route plan / objectives</h3>
+                        </div>
+
+                        <div class="col-xs-1 text-right">
+                            <span class="glyphicon glyphicon-plus expandCollapseIcons" ng-click="expandRouteInfo=!expandRouteInfo" ng-show="!expandRouteInfo"></span>
+                            <span class="glyphicon glyphicon-minus expandCollapseIcons" ng-click="expandRouteInfo=!expandRouteInfo" ng-show="expandRouteInfo"></span>
+                        </div>
+                    </div>
+
+                    <p class="section-subtext"></p>
+
+
+
+                    <!-- Data form -->
+                    <div class="data-section" ng-show="expandRouteInfo">
+
+                        <!-- description -->
+                        <div class="row data-row">
+                            <label class="col-xs-2 text-right data-label">route description:</label>
+
+                            <div class="data-subsection" ng-show="!editTrip_b_routeDescription">
+                                <div class="col-xs-4 data-cell">{{trip_b_routeDescription}}</div>
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- upload images -->
+                        <div class="row data-row">
+                            <label class="col-xs-2 text-right data-label">upload images:</label>
+
+                            <div class="col-xs-3">
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+
+                <!-- section 3:  relavent equipment -->
+                <div class="section">
+
+                    <!-- header -->
+                    <div class="section-header">
+                        <div class="col-xs-11">
+                            <h3>relavent equipment</h3>
+                        </div>
+
+                        <div class="col-xs-1 text-right">
+                            <span class="glyphicon glyphicon-plus expandCollapseIcons" ng-click="expandRelaventEquipment=!expandRelaventEquipment" ng-show="!expandRelaventEquipment"></span>
+                            <span class="glyphicon glyphicon-minus expandCollapseIcons" ng-click="expandRelaventEquipment=!expandRelaventEquipment" ng-show="expandRelaventEquipment"></span>
+                        </div>
+                    </div>
+
+                    <p class="section-subtext"></p>
+
+
+
+                    <!-- Data form -->
+                    <div class="data-section" ng-show="expandRelaventEquipment">
+
+                        <!-- communcation -->
+                        <div>
+                            <div class="row data-row">
+                                <label class="col-xs-2 text-right data-label">communication</label>
+
+                            </div>
+
+                            <div class="row data-row">
+                                <div class="col-xs-1"></div>
+
+                                <div class="col-xs-3">
+                                    <span ng-show="!editTrip_b_communicationEquipment&&trip_b_cellPhone==true" class="glyphicon glyphicon-ok"></span>
+                                    <span class="equipmentLabel">cell phone</span>
+                                </div>
+
+                                <div class="col-xs-3">
+                                    <span ng-show="!editTrip_b_communicationEquipment&&trip_b_satPhone==true" class="glyphicon glyphicon-ok"></span>
+                                    <span class="equipmentLabel">sat phone</span>
+                                </div>
+
+                                <div class="col-xs-3">
+                                    <span ng-show="!editTrip_b_communicationEquipment&&trip_b_radio==true" class="glyphicon glyphicon-ok"></span>
+                                    <span class="equipmentLabel">vhf radio</span>
+                                </div>
+                            </div>
+
+                            <div class="row data-row">
+                                <div class="col-xs-1"></div>
+
+                                <div class="col-xs-3">
+                                    <span ng-show="!editTrip_b_communicationEquipment&&trip_b_personalLocatorBeacon==true" class="glyphicon glyphicon-ok"></span>
+                                    <span class="equipmentLabel">personal locator beacon</span>
+                                </div>
+
+                                <div class="col-xs-1">
+                                    <span ng-show="!editTrip_b_communicationEquipment&&trip_b_otherCommunicationEquipment==true" class="glyphicon glyphicon-ok"></span>
+                                    <span class="equipmentLabel">other:</span>
+                                </div>
+
+                                <div class=col-xs-3>
+                                    <span ng-show="!editTrip_b_communicationEquipment">{{trip_b_otherCommucicationEquipmentDescription}}</span>
+                                </div>
+
+                            </div>
+
+                            <div class="row">
+                                <div class="col-xs-1"></div>
+
+                                <div class="col-xs-7">
+                                    <span ng-show="!editTrip_b_communicationEquipment">notes: &nbsp; {{trip_b_communicationEquipmentNotes}}</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="height:20px;"></div>
+
+                        <!-- overnight -->
+                        <div>
+                            <div class="row data-row">
+                                <label class="col-xs-2 text-left data-label">overnight</label>
+                            </div>
+
+                            <div class="row data-row">
+                                <div class="col-xs-1"></div>
+
+                                <div class="col-xs-3">
+                                    <span ng-show="!editTrip_b_overnightEquipment&&trip_b_tent==true" class="glyphicon glyphicon-ok"></span>
+                                    <span class="equipmentLabel">tent</span>
+                                </div>
+
+                                <div class="col-xs-3">
+                                    <span ng-show="!editTrip_b_overnightEquipment&&trip_b_bivySack==true" class="glyphicon glyphicon-ok"></span>
+                                    <span class="equipmentLabel">bivy sack</span>
+                                </div>
+
+                                <div class="col-xs-3">
+                                    <span ng-show="!editTrip_b_overnightEquipment&&trip_b_tarp==true" class="glyphicon glyphicon-ok"></span>
+                                    <span class="equipmentLabel">tarp</span>
+                                </div>
+                            </div>
+
+                            <div class="row data-row">
+                                <div class="col-xs-1"></div>
+
+                                <div class="col-xs-3">
+                                    <span ng-show="!editTrip_b_overnightEquipment&&trip_b_insulation==true" class="glyphicon glyphicon-ok"></span>
+                                    <span class="equipmentLabel">insulation</span>
+                                </div>
+
+                                <div class="col-xs-3">
+                                    <span ng-show="!editTrip_b_overnightEquipment&&trip_b_stove==true" class="glyphicon glyphicon-ok"></span>
+                                    <span class="equipmentLabel">stove</span>
+                                </div>
+
+                                <div class="col-xs-3">
+                                    <span ng-show="!editTrip_b_overnightEquipment&&trip_b_headlamps==true" class="glyphicon glyphicon-ok"></span>
+                                    <span class="equipmentLabel">headlamps</span>
+                                </div>
+                            </div>
+
+                            <div class="row data-row">
+                                <div class="col-xs-4"></div>
+
+                                <div class="col-xs-1">
+                                    <span ng-show="!editTrip_b_overnightEquipment&&trip_b_other==true" class="glyphicon glyphicon-ok"></span>
+                                    <span class="equipmentLabel">other:</span>
+                                </div>
+
+                                <div class=col-xs-3>
+                                    <span ng-show="!editTrip_b_overnightEquipment">{{trip_b_otherOvernightEquipmentDescription}}</span>
+                                </div>
+
+                            </div>
+
+                            <div class="row">
+                                <div class="col-xs-1"></div>
+
+                                <div class="col-xs-7">
+                                    <span ng-show="!editTrip_b_overnightEquipment">notes: &nbsp; {{trip_b_overnightEquipmentNotes}}</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div style="height:20px;"></div>
+
+                        <!-- identification -->
+                        <div>
+                            <div class="row data-row">
+                                <label class="col-xs-2 text-right data-label">identification</label>
+
+                            </div>
+
+                            <div class="row data-row">
+
+                                <div class="row">
+                                    <div class="col-xs-1"></div>
+                                    <div class="col-xs-2">
+                                        <span class="equipmentLabel">jacket colors:</span>
+                                    </div>
+                                    <div class=col-xs-3>
+                                        <span ng-show="!editTrip_b_">{{trip_b_jacketColors}}</span>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-xs-1"></div>
+                                    <div class="col-xs-2">
+                                        <span class="equipmentLabel">helmet colors:</span>
+                                    </div>
+                                    <div class=col-xs-3>
+                                        <span ng-show="!editTrip_b_identificationEquipment">{{trip_b_helmetColors}}</span>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-xs-1"></div>
+                                    <div class="col-xs-2">
+                                        <span class="equipmentLabel">rope colors:</span>
+                                    </div>
+                                    <div class=col-xs-3>
+                                        <span ng-show="!editTrip_b_identificationEquipment">{{trip_b_ropeColors}}</span>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-xs-1"></div>
+                                    <div class="col-xs-2">
+                                        <span class="equipmentLabel">tent colors:</span>
+                                    </div>
+                                    <div class=col-xs-3>
+                                        <span ng-show="!editTrip_b_identificationEquipment">{{trip_b_tentColors}}</span>
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="col-xs-1"></div>
+                                    <div class="col-xs-7">
+                                        <span ng-show="!editTrip_b_identificationEquipment">notes: &nbsp; {{trip_b_identificationEquipmentNotes}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- section 4: sharing
+                <div class="section">
+
+                    <!-- header 
+                    <div class="section-header">
+                        <div class="col-xs-11">
+                            <h3>sharing</h3>
+                        </div>
+
+                        <div class="col-xs-1 text-right">
+                            <span class="glyphicon glyphicon-plus expandCollapseIcons" ng-click="expandSharing=!expandSharing" ng-show="!expandSharing"></span>
+                            <span class="glyphicon glyphicon-minus expandCollapseIcons" ng-click="expandSharing=!expandSharing" ng-show="expandSharing"></span>
+                        </div>
+                    </div>
+
+                    <p class="section-subtext"></p>
+
+
+
+                    <!-- Data form 
+                    <div class="data-section" ng-show="expandSharing">
+
+                        <div ng-show="expandSharing">
+                            <div class="row">
+                                <label class="col-xs-3 inputCell text-right control-label">make this trip visible to:</label>
+                            </div>
+                            <div class="row data-row">
+                                <div class="col-xs-2"></div>
+                                <div class="col-xs-2">
+                                    <span ng-show="!editTrip_b_sharing&&trip_b_shareWithEverybody==true" class="glyphicon glyphicon-ok"></span>
+                                    <span class="equipmentLabel">everybody</span>
+                                </div>
+                                <div class="col-xs-2">
+                                    <span ng-show="!editTrip_b_sharing&&trip_b_shareWithNobody==true" class="glyphicon glyphicon-ok"></span>
+                                    <span class="equipmentLabel">nobody</span>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-xs-2"></div>
+                                <div class="col-xs-2">
+                                    <span ng-show="!editTrip_b_sharing&&trip_b_shareWithGroup1==true" class="glyphicon glyphicon-ok"></span>
+                                    <span class="equipmentLabel">group 1</span>
+                                </div>
+                                <div class="col-xs-2">
+                                    <span ng-show="!editTrip_b_sharing&&trip_b_shareWithGroup2==true" class="glyphicon glyphicon-ok"></span>
+                                    <span class="equipmentLabel">group 2</span>
+                                </div>
+                                <div class="col-xs-2">
+                                    <span ng-show="!editTrip_b_sharing&&trip_b_shareWithGroup3==true" class="glyphicon glyphicon-ok"></span>
+                                    <span class="equipmentLabel">group 3</span>
+                                </div>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                -->    
+
+                <!-- section 5:  trip report
+                <div class="section">
+
+                    <!-- header
+                    <div class="section-header">
+                        <div class="col-xs-11">
+                            <h3>trip report</h3>
+                        </div>
+
+                        <div class="col-xs-1 text-right">
+                            <span class="glyphicon glyphicon-plus expandCollapseIcons" ng-click="expandTripReport=!expandTripReport" ng-show="!expandTripReport"></span>
+                            <span class="glyphicon glyphicon-minus expandCollapseIcons" ng-click="expandTripReport=!expandTripReport" ng-show="expandTripReport"></span>
+                        </div>
+                    </div>
+
+                    <p class="section-subtext"></p>
+
+
+
+                    <!-- Data form
+                    <div class="data-section" ng-show="expandTripReport">
+
+                        <!-- description
+                        <div class="row data-row">
+                            <label class="col-xs-2 text-right data-label">trip report:</label>
+
+                            <div class="data-subsection" ng-show="!editTrip_b_tripReport">
+                                <div class="col-xs-4 data-cell">{{trip_b_tripReport}}</div>
+
+                                <div class="col-xs-1 data-cell">
+                                </div>
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- upload images
+                        <div class="row data-row">
+                            <label class="col-xs-2 text-right data-label">images:</label>
+
+                            <div class="col-xs-3">
+
+
+                            </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                -->
+
+            </div>
+
+        </form>
+
+    </div>
+
+
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,183 @@
+body {
+    padding: 70px 40px;
+}
+.titleBar {
+    color: #eee;
+    background-color: #222;
+    margin-left: -20px;
+    margin-right: -20px;
+    margin-top: 0;
+    padding: 10px;
+}
+.pForm {
+    margin: 0;
+}
+h2 {
+    margin-top: 0;
+}
+.navbar-text {
+    font-size: 120%;
+}
+.navBarText {
+    font-size: 90%;
+    color: #eee;
+}
+.text {
+    padding-left: 5px;
+    padding-right: 5px;
+}
+#terrainLabels {
+    position: absolute;
+    width: 100%;
+    right: 0;
+    bottom: 60px;
+    padding-right: 10px;
+    padding-left: 10px;
+}
+.form-control {
+    padding-left: 4px;
+    padding-right: 4px;
+}
+.inputCell {
+    margin-bottom: 10px;
+    height: 30px;
+    padding-top: 5px;
+    text-align: center;
+}
+.form-group {
+    margin-bottom: 0;
+    margin-top: 0;
+}
+.inputColumn {
+    padding-left: 4px;
+    padding-right: 4px;
+}
+.indexCol {
+    width: 3%;
+}
+.nameCol {
+    width: 12%;
+}
+.column {
+    display: inline;
+    float: left;
+    padding-left: 10px;
+    padding-right: 10px;
+}
+.coordinatesCol {
+    width: 10%;
+}
+.zoneCol {
+    width: 5%;
+}
+.elevationCol {
+    width: 10%;
+}
+.distanceCol {
+    width: 10%;
+}
+.timeCol {
+    width: 10%;
+}
+.aspectCol {
+    width: 10%;
+}
+.notesCol {
+    width: 10%;
+}
+.eastingCol {
+    width: 8%;
+}
+.northingCol {
+    width: 8%;
+}
+.linearDistanceCol {
+    width: 5%;
+}
+.actualDistanceCol {
+    width: 5%;
+}
+.timeMethodCol {
+    width: 5%;
+}
+.timeTimeCol {
+    width: 5%;
+}
+.equipmentLabel{
+    padding-left: 10px;
+}
+.section-header {
+    border-bottom: 2px solid #0088dd;
+    padding-left: 10px;
+    height:30px;
+}
+
+.data-row {
+    margin-bottom:10px;
+    height:1.428571429;
+}
+
+.data-section {
+    margin-top:20px;
+}
+
+.section {
+    margin-bottom:50px;
+}
+
+.section-subtext {
+    padding-left:10px;
+}
+
+.data-cell {
+    height:inherit;
+    padding-top:7px;
+    text-align:center;
+}
+
+.data-subsection {
+    height:inherit;
+    text-align:center;
+}
+
+.data-label {
+    height:inherit;
+    padding-top:7px;
+    text-align:center;
+}
+
+.repeat-cell {
+    height:30px;
+    text-align: center;
+}
+
+.repeat-data-cell {
+    height:30px;
+    padding-top:7px;
+    text-align:center;
+    margin-bottom:10px;
+}
+
+.repeat-input-cell {
+    height:24x;
+    margin-bottom:10px;
+}
+
+.expandCollapseIcons {
+    padding-top:7px;
+}
+
+.news-feed-section {
+    height:150px;
+}
+
+.navbar-dropdown {
+    margin-top:5px;
+    margin-left:10px;
+    margin-right:5px;
+}
+
+.photo-row {
+    height:200px;
+    margin:15px;
+}

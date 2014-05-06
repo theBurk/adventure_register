@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html ng-app="adventureRegister">
+
+<head>
+    <title>a d v e n t u r e | r e g i s t e r</title>
+
+    <!-- libs -->
+    <script type="text/javascript" src="js/lib/angular/angular.js"></script>
+    <script type="text/javascript" src="js/lib/angular/angular-route.js"></script>
+    <script type="text/javascript" src="js/lib/angular/angular-resource.js"></script>
+    <script type="text/javascript" src="js/lib/angular/angular-animate.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/lib/bootstrap/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="css/adventureRegister.css">
+
+
+    <!-- your stuff below -->
+    <script type="text/javascript" src="js/adventureRegister/adventureRegister.js"></script>
+
+</head>
+
+<body>
+    <div ng-controller="GuidePlanCtrl">
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <p class="navbar-text pull-left">a d v e n t u r e | r e g i s t e r</p>
+            <ul class="nav nav-pills">
+                <li class="text-center pull-right">
+                    <a class="navBarText" href="help.html">help</a>
+                </li>
+                <li class="text-center pull-right">
+                    <a class="navBarText" href="trips/trip_c.html">new trip</a>
+                </li>
+                <li class="text-center pull-right">
+                    <a class="navBarText" href="flag_settings.html">flag settings</a>
+                </li>
+                <li class="text-center pull-right">
+                    <a class="navBarText" href="profile.html">profile</a>
+                </li>
+                <li class="text-center pull-right">
+                    <a class="navBarText" href="index.html">home</a>
+                </li>
+            </ul>
+        </nav>
+
+
+
+        <div>
+            <form role="form">
+
+                <!-- section 1:  basic information -->
+
+                <div>
+
+                    <div class="col-xs-10">
+
+                        <div class="section">
+                            <h3 class="section-header">profile</h3>
+                            <p class="section-subtext"></p>
+
+                            <div class="data-section">
+                                <div class="row data-row">
+
+                                    <div class="data-subsection col-xs-3">
+                                        <img src="images/profile_pic.jpg" style="width:100%; border-radius:10px;">
+                                    </div>
+
+
+                                    <div class="col-xs-6">
+
+                                        <div class="data-section">
+                                            <div class="row data-row">
+                                                <label class="col-xs-4 text-right data-label">name:</label>
+
+                                                <div class="data-subsection" ng-show="!editName">
+                                                    <div class="col-xs-6 data-cell">{{name}}</div>
+
+                                                    <div class="col-xs-2 data-cell">
+                                                        <a ng-click="editName=true" ng-show="!editName">
+                                                            <span class="glyphicon glyphicon-edit"></span>
+                                                        </a>
+                                                    </div>
+                                                </div>
+
+                                                <div ng-show="editName">
+                                                    <div class="col-xs-6">
+                                                        <input type="tel" class="form-control text-center" id="name" ng-model="name" />
+                                                    </div>
+
+                                                    <div class="col-xs-2 data-cell">
+                                                        <a ng-click="editName=false" ng-show="editName">
+                                                            <span class="glyphicon glyphicon-ok" ng-click="editFlagContact_b=false"></span>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="row data-row">
+                                                <label class="col-xs-4 text-right data-label">email:</label>
+
+                                                <div class="data-subsection" ng-show="!editEmail">
+                                                    <div class="col-xs-6 data-cell">{{email}}</div>
+
+                                                    <div class="col-xs-2 data-cell">
+                                                        <a ng-click="editEmail=true" ng-show="!editEmail">
+                                                            <span class="glyphicon glyphicon-edit"></span>
+                                                        </a>
+                                                    </div>
+                                                </div>
+
+                                                <div ng-show="editEmail">
+                                                    <div class="col-xs-6">
+                                                        <input type="tel" class="form-control text-center" id="Email" ng-model="email" />
+                                                    </div>
+
+                                                    <div class="col-xs-2 data-cell">
+                                                        <a ng-click="editEmail=false" ng-show="editEmail">
+                                                            <span class="glyphicon glyphicon-ok" ng-click="editFlagContact_b=false"></span>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+
+                                            <div class="row data-row">
+                                                <label class="col-xs-4 text-right data-label">password:</label>
+
+                                                <div class="data-subsection" ng-show="!editPassword">
+                                                    <div class="col-xs-6 data-cell">{{password}}</div>
+
+                                                    <div class="col-xs-2 data-cell">
+                                                        <a ng-click="editPassword=true" ng-show="!editPassword">
+                                                            <span class="glyphicon glyphicon-edit"></span>
+                                                        </a>
+                                                    </div>
+                                                </div>
+
+                                                <div ng-show="editPassword">
+                                                    <div class="col-xs-6">
+                                                        <input type="tel" class="form-control text-center" id="Password" ng-model="password" />
+                                                    </div>
+
+                                                    <div class="col-xs-2 data-cell">
+                                                        <a ng-click="editPassword=false" ng-show="editPassword">
+                                                            <span class="glyphicon glyphicon-ok" ng-click="editFlagContact_b=false"></span>
+                                                        </a>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <br/>
+                        <br/>
+                        <br/>
+                    </div>
+
+                </div>
+
+
+                <!-- section 2:  past trips -->
+                <div class="col-xs-10">
+
+                    <div class="news-feed-section">
+                        <h3 class="section-header">past trips</h3>
+                        <ul>
+                            <li>4/18/14 - training run
+                                <a>(trip info)</a>
+                            </li>
+                            <li>3/28/14 - guiding Long John Wall
+                                <a>(trip info)</a>
+                            </li>
+                            <li>2/15/14 - Teton's backcountry
+                                <a>(trip info)</a>
+                            </li>
+                            <li>1/10/14 - Wapta traverse
+                                <a>(trip info)</a>
+                            </li>
+                            <a>(see more)</a>
+                        </ul>
+                    </div>
+
+                    <br/>
+                    <br/>
+                    <br/>
+                </div>
+                <!-- section 3:  photos -->
+                <div class="col-xs-10">
+
+                    <div class="news-feed-section">
+                        <h3 class="section-header">photos</h3>
+
+                        <div class=row>
+                            <div class="col-xs-2  photo-row">
+                                <img src="images/photo.jpg" style="height:100%; border-radius:10px;" />
+                                <a>Mount Baker</a>
+                            </div>
+
+                            <div class="col-xs-2 photo-row">
+                                <img src="images/photo3.jpg" style="height:100%; border-radius:10px;" />
+                                <a>Keiners Route</a>
+                            </div>
+
+
+                            <div class="col-xs-2 photo-row">
+                                <img src="images/photo4.jpg" style="height:100%; border-radius:10px;" />
+                                <a>Friends Hut</a>
+                            </div>
+
+
+                            <div class="col-xs-2 photo-row">
+                                <img src="images/photo5.jpg" style="height:100%; border-radius:10px;" />
+                                <a>Lincoln Falls</a>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-2 photo-row">
+                                <img src="images/photo6.jpg" style="height:100%; border-radius:10px;" />
+                                <a>Red Rocks, Sun Dog</a>
+                            </div>
+
+
+                            <div class="col-xs-3 photo-row">
+                                <img src="images/photo7.jpg" style="height:100%; border-radius:10px;" />
+                                <a>Notchtop, Spiral Route</a>
+                            </div>
+
+
+                            <div class="col-xs-2 photo-row">
+                                <img src="images/photo8.jpg" style="height:100%; border-radius:10px;" />
+                                <a>FirstFlatiron</a>
+                            </div>
+
+
+                            <div class="col-xs-2 photo-row">
+                                <img src="images/photo9.jpg" style="height:100%; border-radius:10px;" />
+                                <a>Wind River Trip</a>
+                            </div>
+                        </div>
+                        <br/>
+                        <br/>
+                        <br/>
+                        <br/>
+
+
+
+
+                    </div>
+                </div>
+        </div>
+    </div>
+
+
+
+
+
+
+    </br>
+
+
+
+
+    </form>
+    </div>
+
+
+</body>
+
+</html>

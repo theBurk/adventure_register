@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html ng-app="adventureRegister">
+
+<head>
+    <title>a d v e n t u r e | r e g i s t e r</title>
+
+    <!-- libs -->
+    <script type="text/javascript" src="js/lib/angular/angular.js"></script>
+    <script type="text/javascript" src="js/lib/angular/angular-route.js"></script>
+    <script type="text/javascript" src="js/lib/angular/angular-resource.js"></script>
+    <script type="text/javascript" src="js/lib/angular/angular-animate.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/lib/bootstrap/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="css/adventureRegister.css">
+
+    <!-- your stuff below -->
+    <script type="text/javascript" src="js/adventureRegister/adventureRegister.js"></script>
+
+</head>
+
+<body>
+    <div ng-controller="GuidePlanCtrl">
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <p class="navbar-text pull-left">a d v e n t u r e | r e g i s t e r</p>
+            <ul class="nav nav-pills">
+                <li class="text-center pull-right">
+                    <a class="navBarText" href="help.html">help</a>
+                </li>
+                <li class="text-center pull-right">
+                    <a class="navBarText" href="trips/trip_c.html">new trip</a>
+                </li>
+                <li class="text-center pull-right">
+                    <a class="navBarText" href="flag_settings.html">flag settings</a>
+                </li>
+                <li class="text-center pull-right">
+                    <a class="navBarText" href="profile.html">profile</a>
+                </li>
+                <li class="text-center pull-right">
+                    <a class="navBarText" href="index.html">home</a>
+                </li>
+            </ul>
+        </nav>
+
+
+
+        <div class="col-xs-8 ">
+
+            <div class="news-feed-section">
+                <div class="section-header">
+                    <h3>your active trips</h3>
+                </div>
+                <ul>
+                    <li ng-show="!back">
+                        <img src="images/profile_pic.jpg" style="height:60px; margin:10px; border-radius:10px;" />Skiing the Gnar | expected return time Sunday at 6:00pm | flag time Sunday at 11:00pm
+                        <a href="trips/trip_a.html">(trip info)</a>
+                        </p>
+                        <input type="button" class="btn btn-default" value="Check in" ng-click="back=true" />
+                    </li>
+                    <span ng-show="back">(no active trips)</span>
+                    <li ng-show="back" style="opacity:0.4;">
+                        <img src="images/profile_pic.jpg" style="height:60px; margin:10px; border-radius:10px;" />Skiing the Gnar | checked in Sunday at 8:31pm
+                        <a href="trips/trip_a.html">(trip info)</a>
+                        </p>
+
+                    </li>
+                </ul>
+
+            </div>
+
+            <br/>&nbsp;
+            <br/>
+            <br/>&nbsp;
+            <br/>
+
+
+            <div class="news-feed-section">
+                <h3 class="section-header">your pending flags</h3>
+                <ul>
+                    <li>
+                        <img src="images/Jason.jpg" style="height:60px; margin:10px; border-radius:10px;" />Jason is climbing in Eldo | expected return time 18:00 | flag time 20:00.
+                        <a href="trips/trip_b.html">(trip info)</a>
+                    </li>
+                </ul>
+            </div>
+
+            </br>
+
+            <div class="news-feed-section">
+                <h3 class="section-header">news feed</h3>
+                <ul>
+                    <li>
+                        <img src="images/Joe.jpg" style="height:60px; margin:10px; border-radius:10px;" />Joe is climbing Mount Baker.</li>
+                    <li>
+                        <img src="images/Josh.jpg" style="height:60px; margin:10px; border-radius:10px;" />Josh is in Yosesmite for the weekend.</li>
+                    <li>
+                        <img src="images/Mike.jpg" style="height:60px; margin:10px; border-radius:10px;" />Mike is crushing it.</li>
+                </ul>
+            </div>
+        </div>
+
+
+        <div class="col-xs-2"></div>
+        <!--
+        <div class="col-xs-2">
+            <div class="text-center">
+                <h3 class="section-header text-center">links</h3>
+                <ul>
+                    <li>
+                        <a>trip archive</a>
+                    </li>
+                    <li>
+                        <a>friends</a>
+                    </li>
+                    <li>
+                        <a>photos</a>
+                    </li>
+                </ul>
+            </div>
+-->
+    </div>
+
+
+    </br>
+
+
+
+
+    </form>
+    </div>
+
+
+</body>
+
+</html>

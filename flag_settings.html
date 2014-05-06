@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html ng-app="adventureRegister">
+
+<head>
+    <title>a d v e n t u r e | r e g i s t e r</title>
+
+    <!-- libs -->
+    <script type="text/javascript" src="js/lib/angular/angular.js"></script>
+    <script type="text/javascript" src="js/lib/angular/angular-route.js"></script>
+    <script type="text/javascript" src="js/lib/angular/angular-resource.js"></script>
+    <script type="text/javascript" src="js/lib/angular/angular-animate.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/lib/bootstrap/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="css/adventureRegister.css">
+
+
+    <!-- your stuff below -->
+    <script type="text/javascript" src="js/adventureRegister/adventureRegister.js"></script>
+
+</head>
+
+<body>
+    <div ng-controller="GuidePlanCtrl">
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <p class="navbar-text pull-left">a d v e n t u r e | r e g i s t e r</p>
+            <ul class="nav nav-pills">
+                <li class="text-center pull-right">
+                    <a class="navBarText" href="help.html">help</a>
+                </li>
+                <li class="text-center pull-right">
+                    <a class="navBarText" href="trips/trip_c.html">new trip</a>
+                </li>
+                <li class="text-center pull-right">
+                    <a class="navBarText" href="flag_settings.html">flag settings</a>
+                </li>
+                <li class="text-center pull-right">
+                    <a class="navBarText" href="profile.html">profile</a>
+                </li>
+                <li class="text-center pull-right">
+                    <a class="navBarText" href="index.html">home</a>
+                </li>
+            </ul>
+        </nav>
+
+
+
+        <div>
+            <form role="form">
+
+                <!-- section 1:  basic information -->
+
+                <div>
+
+                    <div class="col-xs-10">
+
+                        <div class="section">
+                            <h3 class="section-header">your contact information</h3>
+                            <p class="section-subtext">This information will be used to send you an automated message thirty minutes before you selected flag time, to remind you to check in, in case you've forgotten.</p>
+
+                            <div class="data-section">
+                                <div class="row data-row">
+                                    <label class="col-xs-2 text-right data-label">text message:</label>
+
+                                    <div class="data-subsection" ng-show="!editContactText">
+                                        <div class="col-xs-3 data-cell">{{contacttext}}</div>
+
+                                        <div class="col-xs-1 data-cell">
+                                            <a ng-click="editContactText=true" ng-show="!editContactText">
+                                                <span class="glyphicon glyphicon-edit"></span>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <div ng-show="editContactText">
+                                        <div class="col-xs-3">
+                                            <input type="tel" class="form-control text-center" id="contactText" ng-model="contacttext" />
+                                        </div>
+
+                                        <div class="col-xs-1 data-cell">
+                                            <a ng-click="editContactText=false" ng-show="editContactText">
+                                                <span class="glyphicon glyphicon-ok" ng-click="editFlagContact_b=false"></span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="row data-row">
+                                    <label class="col-xs-2 text-right data-label">email:</label>
+
+                                    <div class="data-subsection" ng-show="!editContactEmail">
+                                        <div class="col-xs-3 data-cell">{{contactemail}}</div>
+
+                                        <div class="col-xs-1 data-cell">
+                                            <a ng-click="editContactEmail=true" ng-show="!editContactEmail">
+                                                <span class="glyphicon glyphicon-edit"></span>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <div ng-show="editContactEmail">
+                                        <div class="col-xs-3">
+                                            <input type="tel" class="form-control text-center" id="contactEmail" ng-model="contactemail" />
+                                        </div>
+
+                                        <div class="col-xs-1 data-cell">
+                                            <a ng-click="editContactEmail=false" ng-show="editContactEmail">
+                                                <span class="glyphicon glyphicon-ok" ng-click="editFlagContact_b=false"></span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+                        </div>
+
+                        <div class="section">
+                            <h3 class="section-header">flag contacts</h3>
+                            <p class="section-subtext">These are your designated contacts, that will be alerted if you have not checked in by your specified flag time.</p>
+
+                            <div class="data-section">
+                                <div class="row data-row">
+                                    <label class="col-xs-2 text-right data-label">flag contact 1:</label>
+
+                                    <div ng-show="!editFlagContact_a" class="data-subsection">
+                                        <div class="col-xs-3 data-cell">{{flagContact_a_name}}</div>
+                                        <div class="col-xs-3 data-cell">{{flagContact_a_text}} &nbsp (text)</div>
+                                        <div class="col-xs-3 data-cell">{{flagContact_a_email}}</div>
+                                        <div class="col-xs-1 data-cell">
+                                            <a>
+                                                <span class="glyphicon glyphicon-edit" ng-click="editFlagContact_a=true"></span>
+                                            </a>
+                                            &nbsp;
+                                            <a>
+                                                <span class="glyphicon glyphicon-remove" ng-click=""></span>
+                                            </a>
+                                        </div>
+                                    </div>
+
+                                    <div ng-show="editFlagContact_a" class="">
+                                        <div class="col-xs-3" ng-show="editFlagContact_a">
+                                            <input type="tel" class="form-control text-center" id="" ng-model="flagContact_a_name" />
+                                        </div>
+                                        <div class="col-xs-3" ng-show="editFlagContact_a">
+                                            <input type="tel" class="form-control text-center" id="" ng-model="flagContact_a_text" />
+                                        </div>
+                                        <div class="col-xs-3" ng-show="editFlagContact_a">
+                                            <input type="tel" class="form-control text-center" id="" ng-model="flagContact_a_email" />
+                                        </div>
+                                        <div class="col-xs-1 data-cell">
+                                            <a>
+                                                <span class="glyphicon glyphicon-ok" ng-click="editFlagContact_a=false"></span>
+                                            </a>
+                                            &nbsp;
+                                            <a>
+                                                <span class="glyphicon glyphicon-remove" ng-click=""></span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="data-section">
+                                    <div class="row data-row">
+                                        <label class="col-xs-2 text-right data-label">flag contact 2:</label>
+
+                                        <div ng-show="!editFlagContact_b" class="data-subsection">
+                                            <div class="col-xs-3 data-cell">{{flagContact_b_name}}</div>
+                                            <div class="col-xs-3 data-cell">{{flagContact_b_text}} &nbsp (text)</div>
+                                            <div class="col-xs-3 data-cell">{{flagContact_b_email}}</div>
+                                            <div class="col-xs-1 data-cell">
+                                                <a>
+                                                    <span class="glyphicon glyphicon-edit" ng-click="editFlagContact_b=true"></span>
+                                                </a>
+                                                &nbsp;
+                                                <a>
+                                                    <span class="glyphicon glyphicon-remove" ng-click=""></span>
+                                                </a>
+                                            </div>
+                                        </div>
+
+                                        <div ng-show="editFlagContact_b" class="">
+                                            <div class="col-xs-3" ng-show="editFlagContact_b">
+                                                <input type="tel" class="form-control text-center" id="" ng-model="flagContact_b_name" />
+                                            </div>
+                                            <div class="col-xs-3" ng-show="editFlagContact_b">
+                                                <input type="tel" class="form-control text-center" id="" ng-model="flagContact_b_text" />
+                                            </div>
+                                            <div class="col-xs-3" ng-show="editFlagContact_b">
+                                                <input type="tel" class="form-control text-center" id="" ng-model="flagContact_b_email" />
+                                            </div>
+                                            <div class="col-xs-1 data-cell">
+                                                <a>
+                                                    <span class="glyphicon glyphicon-ok" ng-click="editFlagContact_b=false"></span>
+                                                </a>
+                                                &nbsp;
+                                                <a>
+                                                    <span class="glyphicon glyphicon-remove" ng-click=""></span>
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="data-section">
+                                        <div class="col-xs-5"></div>
+                                        <div class="col-xs-2">
+                                            <input type="button" class="btn btn-default pull-center" value="add flag contact" ng-click="expandBasicInfo=!expandBasicInfo" />
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+
+
+
+
+
+
+                            </br>
+                        </div>
+                    </div>
+
+
+                    </br>
+
+
+
+
+            </form>
+            </div>
+
+
+</body>
+
+</html>

@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html ng-app="adventureRegister">
+
+<head>
+    <title>a d v e n t u r e | r e g i s t e r</title>
+
+    <!-- libs -->
+    <script type="text/javascript" src="js/lib/angular/angular.js"></script>
+    <script type="text/javascript" src="js/lib/angular/angular-route.js"></script>
+    <script type="text/javascript" src="js/lib/angular/angular-resource.js"></script>
+    <script type="text/javascript" src="js/lib/angular/angular-animate.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/lib/bootstrap/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="css/adventureRegister.css">
+
+    <!-- your stuff below -->
+    <script type="text/javascript" src="js/adventureRegister/adventureRegister.js"></script>
+
+</head>
+
+<body>
+    <div ng-controller="GuidePlanCtrl">
+        <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
+            <p class="navbar-text pull-left">a d v e n t u r e | r e g i s t e r</p>
+            <ul class="nav nav-pills">
+                <li class="text-center pull-right">
+                    <a class="navBarText">help</a>
+                </li>
+                <li class="text-center pull-right">
+                    <a class="navBarText" href="trip.html">new trip</a>
+                </li>
+                <li class="text-center pull-right">
+                    <a class="navBarText" href="flag_settings.html">flag settings</a>
+                </li>
+                <li class="text-center pull-right">
+                    <a class="navBarText" href="profile%20_edit.html">profile</a>
+                </li>
+                <li class="text-center pull-right">
+                    <a class="navBarText" href="index.html">home</a>
+                </li>
+            </ul>
+        </nav>
+
+
+
+        <div>
+            <form role="form">
+
+                <input type="button" class="btn btn-default pull-right save-button" value="cancel" ng-click="expandBasicInfo=!expandBasicInfo" />
+                <input type="button" class="btn btn-default pull-right cancel-button" value="save" ng-click="expandBasicInfo=!expandBasicInfo" />
+                
+                <br/>
+                <br/>
+
+                <!-- section 1:  basic information -->
+
+                <div class="basicInfo" style="border-style:solid; padding:10pt; border-width:1pt">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <p>basic info</p>
+                        </div>
+                        <div class="col-xs-5"></div>
+                        <div class="col-xs-1 text-center">
+                            <input type="button" class="btn btn-default" value="+" ng-click="expandBasicInfo=!expandBasicInfo" ng-show="!expandBasicInfo" />
+                            <input type="button" class="btn btn-default" value="-" ng-click="expandBasicInfo=!expandBasicInfo" ng-show="expandBasicInfo" />
+                        </div>
+
+                    </div>
+
+
+
+                    <div ng-show="expandBasicInfo">
+
+                        <div class="row">
+                            <label class="col-xs-2 inputCell text-right control-label">name:</label>
+                            <div class="col-xs-2">
+                                <input type="input" class="form-control inputCell text-center" id="name" placeholder="" ng-model="trip.name" />
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <label class="col-xs-2 inputCell text-right control-label">type:</label>
+
+                            <div class="form-group col-xs-2">
+                                <select class="form-control inputCell" ng-model="trip.type" ng-options="v for (k,v) in types" placeholder="select type"></select>
+                            </div>
+
+                            <div class="form-group col-xs-2">
+                                <input type="input" class="form-control inputCell text-center" id="tourDate" placeholder="specify other" ng-show="trip.type=='other'" />
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <label class="col-xs-2 inputCell text-right control-label">people:</label>
+
+                            <div class="col-xs-4" style="padding-left:0; padding-right:0">
+                                <div class="col-xs-6">
+                                    <input type="input" class="form-control inputCell text-center" id="people" placeholder="" ng-model="trip.person[0]" />
+                                </div>
+
+                                <div class="col-xs-6" ng-repeat="(idx, _person) in persons">
+                                    <input type="input" class="form-control inputCell text-center" id="people" placeholder="" ng-model="_trip.person" />
+                                </div>
+                            </div>
+
+                            <input type="button" class="btn btn-default" value="+" ng-click="addPerson()" />
+                            <input type="button" class="btn btn-default" value="-" ng-click="removePerson(idx)" />
+                        </div>
+
+                        <div class="row">
+                            <label class="col-xs-2 inputCell text-right control-label">location:</label>
+                            <div class="col-xs-2">
+                                <input type="input" class="form-control inputCell text-center" id="location" placeholder="" ng-model="trip.location" />
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <label class="col-xs-2 inputCell text-right control-label">description:</label>
+                            <div class="col-xs-4">
+                                <textarea type="input" class="form-control inputCell text-center" id="description" placeholder="" ng-model="trip.description"></textarea>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <label class="col-xs-2 inputCell text-right control-label">departure:</label>
+                            <div class="col-xs-2">
+                                <input type="date" class="form-control inputCell text-center" id="departureDate" placeholder="" ng-model="trip.departureDate" />
+                            </div>
+                            <div class="col-xs-2">
+                                <input type="time" class="form-control inputCell text-center" id="departureTime" placeholder="" ng-model="trip.departureTime" />
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <label class="col-xs-2 inputCell text-right control-label">expected return:</label>
+                            <div class="col-xs-2">
+                                <input type="date" class="form-control inputCell text-center" id="expectedReturnDate" placeholder="" ng-model="trip.expectedReturnDate" />
+                            </div>
+                            <div class="col-xs-2">
+                                <input type="time" class="form-control inputCell text-center" id="exectedReturnTime" placeholder="" ng-model="trip.expectedReturnTime" />
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <label class="col-xs-2 inputCell text-right control-label">flag:</label>
+                            <div class="col-xs-2">
+                                <input type="date" class="form-control inputCell text-center" id="departureDate" placeholder="" ng-model="trip.flagDate" />
+                            </div>
+                            <div class="col-xs-2">
+                                <input type="time" class="form-control inputCell text-center" id="departureTime" placeholder="" ng-model="trip.flagTime" />
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <label class="col-xs-2 inputCell text-right control-label">flag person(s):</label>
+
+                            <div class="col-xs-4" style="padding-left:0; padding-right:0">
+                                <div class="col-xs-6">
+                                    <input type="input" class="form-control inputCell text-center" id="people" placeholder="" ng-model="trip.flagPerson[0]" />
+                                </div>
+
+                                <div class="col-xs-6" ng-repeat="(idx, _flagPerson) in flagPersons">
+                                    <input type="input" class="form-control inputCell text-center" id="people" placeholder="" ng-model="_trip.flagPerson" />
+                                </div>
+                            </div>
+
+                            <input type="button" class="btn btn-default" value="+" ng-click="addflagPerson()" />
+                            <input type="button" class="btn btn-default" value="-" ng-click="removeflagPerson(idx)" />
+                        </div>
+                    </div>
+                </div>
+
+
+                </br>
+
+                <!-- section 2:  route information -->
+
+                <div class="routeInfo" style="border-style:solid; padding:10pt; border-width:1pt">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <p>route plan / objectives</p>
+                        </div>
+                        <div class="col-xs-5"></div>
+                        <div class="col-xs-1 text-center">
+                            <input type="button" class="btn btn-default" value="+" ng-click="expandRouteInfo=!expandRouteInfo" ng-show="!expandRouteInfo" />
+                            <input type="button" class="btn btn-default" value="-" ng-click="expandRouteInfo=!expandRouteInfo" ng-show="expandRouteInfo" />
+                        </div>
+
+                    </div>
+                    <div ng-show="expandRouteInfo">
+                        <div class="row">
+                            <label class="col-xs-2 inputCell text-right control-label">description:</label>
+                            <div class="col-xs-4">
+                                <textarea type="input" class="form-control inputCell text-center" id="routeDescription" placeholder="" ng-model="trip.route.description"></textarea>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="col-xs-2 inputCell text-right control-label">upload images:</label>
+                        </div>
+                        <br/>
+                        <br/>
+                    </div>
+                </div>
+
+
+                </br>
+
+                <!-- section 3: relavent equipment -->
+
+                <div class="relaventEquipment" style="border-style:solid; padding:10pt; border-width:1pt">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <p>relavent equipment</p>
+                        </div>
+                        <div class="col-xs-5"></div>
+                        <div class="col-xs-1 text-center">
+                            <input type="button" class="btn btn-default" value="+" ng-click="expandRelaventEquipment=!expandRelaventEquipment" ng-show="!expandRelaventEquipment" />
+                            <input type="button" class="btn btn-default" value="-" ng-click="expandRelaventEquipment=!expandRelaventEquipment" ng-show="expandRelaventEquipment" />
+                        </div>
+                    </div>
+
+                    <div ng-show="expandRelaventEquipment">
+                        <div class="row">
+                            <label class="col-xs-2 inputCell text-right control-label">communcation</label>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-1"></div>
+                            <div class="col-xs-2">
+                                <input type="checkbox" ng-model="cellPhone" />
+                                <span class="equipmentLabel">cell phone</span>
+                            </div>
+                            <div class="col-xs-2">
+                                <input type="checkbox" ng-model="satPhone" />
+                                <span class="equipmentLabel">sat phone</span>
+                            </div>
+                            <div class="col-xs-2">
+                                <input type="checkbox" ng-model="radio" />
+                                <span class="equipmentLabel">vhf radio</span>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-1"></div>
+                            <div class="col-xs-2">
+                                <input type="checkbox" ng-model="personalLocatorBeacon" />
+                                <span class="equipmentLabel">personal locator beacon</span>
+                            </div>
+                            <div class="col-xs-1">
+                                <input type="checkbox" ng-model="otherCommuncationEquipment" />
+                                <span class="equipmentLabel">other:</span>
+                            </div>
+                            <div class=col-xs-2>
+                                <input type="input" class="form-control inputCell text-center inline" id="name" placeholder="" ng-model="otherCommucicationEquipmentDescription" />
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-1"></div>
+                            <div class="col-xs-5">
+                                <textarea type="input" class="form-control inputCell text-center" placeholder="notes/numbers/frequencies/etc." ng-model="relaventEquipmentNotes"></textarea>
+                            </div>
+                        </div>
+
+                        <br/>
+
+                        <div class="row">
+                            <label class="col-xs-2 inputCell text-right control-label">overnight</label>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-1"></div>
+                            <div class="col-xs-2">
+                                <input type="checkbox" ng-model="tent" />
+                                <span class="equipmentLabel">tent</span>
+                            </div>
+                            <div class="col-xs-2">
+                                <input type="checkbox" ng-model="bivySack" />
+                                <span class="equipmentLabel">bivy sack</span>
+                            </div>
+                            <div class="col-xs-2">
+                                <input type="checkbox" ng-model="tarp" />
+                                <span class="equipmentLabel">tarp</span>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-1"></div>
+                            <div class="col-xs-2">
+                                <input type="checkbox" ng-model="insulation" />
+                                <span class="equipmentLabel">insulation</span>
+                            </div>
+                            <div class="col-xs-2">
+                                <input type="checkbox" ng-model="stove" />
+                                <span class="equipmentLabel">stove</span>
+                            </div>
+                            <div class="col-xs-2">
+                                <input type="checkbox" ng-model="headlamps" />
+                                <span class="equipmentLabel">headlamps</span>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-1"></div>
+                            <div class="col-xs-2"></div>
+                            <div class="col-xs-1">
+                                <input type="checkbox" ng-model="otherOvernightEquipment" />
+                                <span class="equipmentLabel">other:</span>
+                            </div>
+                            <div class=col-xs-2>
+                                <input type="input" class="form-control inputCell text-center inline" id="otherOvernightDescription" placeholder="" ng-model="otherCommucicationEquipmentDescription" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-1"></div>
+                            <div class="col-xs-5">
+                                <textarea type="input" class="form-control inputCell text-center" placeholder="notes" ng-model="overnightEquipmentNotes"></textarea>
+                            </div>
+                        </div>
+
+                        <br/>
+
+                        <div class="row">
+                            <label class="col-xs-2 inputCell text-right control-label">identification</label>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-xs-1"></div>
+                            <div class="col-xs-2">
+                                <span class="equipmentLabel">jacket colors</span>
+                            </div>
+                            <div class=col-xs-3>
+                                <input type="input" class="form-control inputCell text-center inline" placeholder="" ng-model="jacketColors" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-1"></div>
+                            <div class="col-xs-2">
+                                <span class="equipmentLabel">helmet colors</span>
+                            </div>
+                            <div class=col-xs-3>
+                                <input type="input" class="form-control inputCell text-center inline" placeholder="" ng-model="helmetColors" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-1"></div>
+                            <div class="col-xs-2">
+                                <span class="equipmentLabel">rope colors</span>
+                            </div>
+                            <div class=col-xs-3>
+                                <input type="input" class="form-control inputCell text-center inline" placeholder="" ng-model="ropeColors" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-1"></div>
+                            <div class="col-xs-2">
+                                <span class="equipmentLabel">tent colors</span>
+                            </div>
+                            <div class=col-xs-3>
+                                <input type="input" class="form-control inputCell text-center inline" placeholder="" ng-model="tentColors" />
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-1"></div>
+                            <div class="col-xs-5">
+                                <textarea type="input" class="form-control inputCell text-center" placeholder="notes" ng-model="identificationEquipmentNotes"></textarea>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <br/>
+
+                <!-- section 4:  sharing -->
+
+                <div class="sharing" style="border-style:solid; padding:10pt; border-width:1pt">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <p>sharing</p>
+                        </div>
+                        <div class="col-xs-5"></div>
+                        <div class="col-xs-1 text-center">
+                            <input type="button" class="btn btn-default" value="+" ng-click="expandSharing=!expandSharing" ng-show="!expandSharing" />
+                            <input type="button" class="btn btn-default" value="-" ng-click="expandSharing=!expandSharing" ng-show="expandSharing" />
+                        </div>
+
+                    </div>
+                    <div ng-show="expandSharing">
+                        <div class="row">
+                            <label class="col-xs-3 inputCell text-right control-label">make this trip visible to:</label>
+                            <div class="col-xs-2">
+                                <input type="checkbox" ng-model="shareWithEverybody" />
+                                <span class="equipmentLabel">everybody</span>
+                            </div>
+                            <div class="col-xs-2">
+                                <input type="checkbox" ng-model="shareWithNobody" />
+                                <span class="equipmentLabel">nobody</span>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="col-xs-3"></div>
+                            <div class="col-xs-2">
+                                <input type="checkbox" ng-model="shareWithGroup1" />
+                                <span class="equipmentLabel">group 1</span>
+                            </div>
+                            <div class="col-xs-2">
+                                <input type="checkbox" ng-model="shareWithGroup2" />
+                                <span class="equipmentLabel">group 2</span>
+                            </div>
+                            <div class="col-xs-2">
+                                <input type="checkbox" ng-model="shareWithGroup3" />
+                                <span class="equipmentLabel">group 3</span>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                </br>
+
+                <!-- section 5:  trip report -->
+
+                <div class="tripReport" style="border-style:solid; padding:10pt; border-width:1pt">
+                    <div class="row">
+                        <div class="col-xs-6">
+                            <p>trip report & conditions</p>
+                        </div>
+                        <div class="col-xs-5"></div>
+                        <div class="col-xs-1 text-center">
+                            <input type="button" class="btn btn-default" value="+" ng-click="expandTripReport=!expandTripReport" ng-show="!expandTripReport" />
+                            <input type="button" class="btn btn-default" value="-" ng-click="expandTripReport=!expandTripReport" ng-show="expandTripReport" />
+                        </div>
+
+                    </div>
+                    <div ng-show="expandTripReport">
+                        <div class="row">
+                            <label class="col-xs-2 inputCell text-right control-label">conditions:</label>
+                            <div class="col-xs-4">
+                                <textarea type="input" class="form-control inputCell text-center" placeholder="" ng-model="conditions"></textarea>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="col-xs-2 inputCell text-right control-label">trip report:</label>
+                            <div class="col-xs-4">
+                                <textarea type="input" class="form-control inputCell text-center" placeholder="" ng-model="tripReport"></textarea>
+                            </div>
+                        </div>
+                        <div class="row">
+                            <label class="col-xs-2 inputCell text-right control-label">upload images:</label>
+                        </div>
+                        <br/>
+                        <br/>
+                    </div>
+                </div>
+
+
+                </br>
+        </div>
+    </div>
+
+
+    </br>
+
+
+
+
+    </form>
+    </div>
+
+
+</body>
+
+</html>
